@@ -50,7 +50,7 @@
 
     private void iniciarComponentes() {
         //configuración Del Jframe
-        setTitle("Fuga de palabras(JUEGO)");
+        setTitle("Fuga de palabras(Selección)");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(950,700);
         setLocationRelativeTo(null);
@@ -95,15 +95,15 @@
         jpContenido.add(jpContB);
         jpContenido.add(jpContC);
 
-        btnAnimales = new JButton("Animales");
+        btnAnimales = new JButton();
         btnAnimales.setBounds(14, 14, 255, 369);
         btnAnimales.setBackground(new Color(242, 227, 219));
 
-        btnFrutas = new JButton("Frutas");
+        btnFrutas = new JButton();
         btnFrutas.setBounds(14, 14, 255, 369);
         btnFrutas.setBackground(new Color(242, 227, 219));
 
-        btnColores = new JButton("Colores");
+        btnColores = new JButton();
         btnColores.setBounds(14, 14, 255, 369);
         btnColores.setBackground(new Color(242, 227, 219));
 
@@ -112,15 +112,15 @@
         jpContC.add(btnColores);
 
         bt1 = new Decolib("/Imgs/PS1.png");
-        bt1.setBounds(2, 8,260, 350);
+        bt1.setBounds(0, 8,260, 350);
         btnAnimales.add(bt1);
 
         bt2 = new Decolib("/Imgs/PS2.png");
-        bt2.setBounds(2, 8,260, 350);
+        bt2.setBounds(0, 8,260, 350);
         btnFrutas.add(bt2);
 
         bt3 = new Decolib("/Imgs/PS3.png");
-        bt3.setBounds(2, 8,260, 350);
+        bt3.setBounds(0, 8,260, 350);
         btnColores.add(bt3); 
         
         

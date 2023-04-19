@@ -159,6 +159,52 @@ public class VentanaJuego extends JFrame{
         jpPalbra.add(lblPalabraAd);
 
         //Configurar Panel 3
+        jpvocal = new JPanel();
+        jpvocal.setSize(886, 122);
+        jpvocal.setBounds((int)26.5, (int)516.5 , 886, 152);
+        jpvocal.setBackground(new Color(65, 100, 74));
+        add(jpvocal);
+
+        btna = new JButton("a");
+        btna.setSize(120, 120);
+        btna.setBounds((int)32.5 , (int)14.5, 120, 120);
+        btna.setFont(new Font("arial", Font.ROMAN_BASELINE, 25));
+        btna.setOpaque(true);
+        btna.setBackground(new Color(222, 222, 222));
+       
+        btne = new JButton("e");
+        btne.setSize(120, 120);
+        btne.setBounds((int)209.5 , (int)14.5, 120, 120);
+        btne.setFont(new Font("arial", Font.ROMAN_BASELINE, 25));
+        btne.setOpaque(true);
+        btne.setBackground(new Color(222, 222, 222));
+
+        btni = new JButton("i");
+        btni.setSize(120, 120);
+        btni.setBounds((int)389.5 , (int)14.5, 120, 120);
+        btni.setFont(new Font("arial", Font.ROMAN_BASELINE, 25));
+        btni.setOpaque(true);
+        btni.setBackground(new Color(222, 222, 222));
+
+        btno = new JButton("o");
+        btno.setSize(120, 120);
+        btna.setBounds((int)563.5 , (int)14.5, 120, 120);
+        btno.setFont(new Font("arial", Font.ROMAN_BASELINE, 25));
+        btno.setOpaque(true);
+        btno.setBackground(new Color(222, 222, 222));
+
+        btnu = new JButton("u");
+        btnu.setSize(120, 120);
+        btna.setBounds((int)741.5 , (int)14.5, 120, 120);
+        btnu.setFont(new Font("arial", Font.ROMAN_BASELINE, 25));
+        btnu.setOpaque(true);
+        btnu.setBackground(new Color(222, 222, 222));
         
+        jpvocal.add(btna);
+        jpvocal.add(btne);
+        jpvocal.add(btni);
+        jpvocal.add(btno);
+        jpvocal.add(btnu);
+
     }
 }

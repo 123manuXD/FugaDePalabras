@@ -5,37 +5,19 @@
  */
 
 package vistaVentanas;
-import java.awt.Color;
-import java.awt.Container;
-import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.Image;
-import java.awt.TextArea;
-import java.awt.TextField;
-import java.awt.Toolkit;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.security.PrivilegedAction;
-import javax.swing.JButton;
-import javax.swing.JComponent;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
-import javax.swing.SwingConstants;
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
 
 
-
-public class VentanaInicial  extends JFrame{
+public class VentanaInicial  extends JFrame implements ActionListener {
     
     private Decolib jpImage;
     private JLabel lblBienvenida;
     private JLabel lblNombreP;
     private JTextField txtNombre;
     private JButton btninciar;
+    private JButton btninstruciones;
     private JPanel jpcontenedor;
 
     public VentanaInicial(){
@@ -78,11 +60,15 @@ public class VentanaInicial  extends JFrame{
         lblNombreP.setFont(new Font("arial", Font.ROMAN_BASELINE, 22));
         
         btninciar = new JButton("Ingresar");
-        btninciar.setBounds(180, 180, 150, 40);
+        btninciar.setBounds(90, 180, 150, 40);
+
+        btninstruciones = new JButton("Instrucciones");
+        btninstruciones.setBounds(270, 180, 150, 40);
 
         jpcontenedor.add(lblBienvenida);
         jpcontenedor.add(lblNombreP);
         jpcontenedor.add(btninciar);
+        jpcontenedor.add(btninstruciones);
 
         txtNombre = new JTextField("");
         txtNombre.setBounds(130, 100, 350, 40);
@@ -91,6 +77,6 @@ public class VentanaInicial  extends JFrame{
         
         jpcontenedor.add(txtNombre);
         
-        
     }
+
 }

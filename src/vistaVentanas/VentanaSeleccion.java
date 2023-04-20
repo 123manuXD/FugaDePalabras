@@ -7,29 +7,14 @@
 
  package vistaVentanas;
 
- import java.awt.Color;
- import java.awt.Container;
- import java.awt.Font;
- import java.awt.Graphics;
- import java.awt.Image;
- import java.awt.TextArea;
- import java.awt.TextField;
- import java.awt.Toolkit;
- import java.awt.event.ActionEvent;
- import java.awt.event.ActionListener;
- import java.awt.event.KeyEvent;
- import java.awt.event.KeyListener;
- import java.security.PrivilegedAction;
- import javax.swing.JButton;
- import javax.swing.JComponent;
- import javax.swing.JFrame;
- import javax.swing.JLabel;
- import javax.swing.JOptionPane;
- import javax.swing.JPanel;
- import javax.swing.JTextField;
- import javax.swing.SwingConstants;
+ import java.awt.*;
+import java.awt.event.*;
+import java.util.Set;
 
- public class VentanaSeleccion extends JFrame{
+import javax.swing.*;
+import Logica.Categorias;
+
+ public class VentanaSeleccion extends JFrame implements ActionListener{
 
     private JLabel lblinfo;
     private JButton btnAnimales;
@@ -45,7 +30,7 @@
 
     public VentanaSeleccion (){
         iniciarComponentes();
-        getContentPane().setBackground((new Color(65, 100, 74)));
+        getContentPane().setBackground((new Color(242, 227, 219)));
     }
 
     private void iniciarComponentes() {
@@ -60,27 +45,26 @@
 
         //configurar de los paneles
         jpContenido = new JPanel();
-        jpContenido.setSize(950,700);
-        jpContenido.setBounds(0,0,950,700);
+        jpContenido.setBounds(16,18,900,620);
         jpContenido.setLayout(null);
         jpContenido.setBackground(new Color(65, 100, 74));
         add(jpContenido);
 
         jpContA = new JPanel();
-        jpContA.setSize(285,399);
-        jpContA.setBounds(19,196,285,399);
+        jpContA.setSize((int)247.7,(int)338.68);
+        jpContA.setBounds((int)39.53, (int)189.06, (int)247.7,(int)338.68);
         jpContA.setLayout(null);
         jpContA.setBackground(new Color(242, 227, 219));
 
         jpContB = new JPanel();
-        jpContB.setSize(285,399);
-        jpContB.setBounds(325,196,285,399);
+        jpContB.setSize((int)247.7,(int)338.68);
+        jpContB.setBounds((int)332.53, (int)189.06, (int)247.7,(int)338.68);
         jpContB.setLayout(null);
         jpContB.setBackground(new Color(242, 227, 219));
 
         jpContC = new JPanel();
-        jpContC.setSize(285,399);
-        jpContC.setBounds(633,196,285,399);
+        jpContC.setSize((int)247.7,(int)338.68);
+        jpContC.setBounds((int)626.53, (int)189.06, (int)247.7,(int)338.68);
         jpContC.setLayout(null);
         jpContC.setBackground(new Color(242, 227, 219));
         
@@ -96,15 +80,15 @@
         jpContenido.add(jpContC);
 
         btnAnimales = new JButton();
-        btnAnimales.setBounds(14, 14, 255, 369);
+        btnAnimales.setBounds((int)7.16, (int)13.72, (int)227.31, (int)310.53);
         btnAnimales.setBackground(new Color(242, 227, 219));
 
         btnFrutas = new JButton();
-        btnFrutas.setBounds(14, 14, 255, 369);
+        btnFrutas.setBounds((int)7.16, (int)13.72, (int)227.31, (int)310.53);
         btnFrutas.setBackground(new Color(242, 227, 219));
 
         btnColores = new JButton();
-        btnColores.setBounds(14, 14, 255, 369);
+        btnColores.setBounds((int)7.16, (int)13.72, (int)227.31, (int)310.53);
         btnColores.setBackground(new Color(242, 227, 219));
 
         jpContA.add(btnAnimales);
@@ -112,18 +96,30 @@
         jpContC.add(btnColores);
 
         bt1 = new Decolib("/Imgs/PS1.png");
-        bt1.setBounds(0, 8,260, 350);
+        bt1.setBounds(2, 2,(int)227.31, (int)310.53);
         btnAnimales.add(bt1);
 
         bt2 = new Decolib("/Imgs/PS2.png");
-        bt2.setBounds(0, 8,260, 350);
+        bt2.setBounds(2, 2,(int)227.31, (int)310.53);
         btnFrutas.add(bt2);
 
         bt3 = new Decolib("/Imgs/PS3.png");
-        bt3.setBounds(0, 8,260, 350);
+        bt3.setBounds(2, 2,(int)227.31, (int)310.53);
         btnColores.add(bt3); 
         
+
+        btnAnimales.addActionListener(this);
+        btnFrutas.addActionListener(this);
+        btnColores.addActionListener(this);
         
     }
 
+    @Override
+    public void actionPerformed(ActionEvent evento){
+        if(evento.getSource() == btnAnimales){
+            obtenerNombre(1);
+        }
+    }
+
+   
  }

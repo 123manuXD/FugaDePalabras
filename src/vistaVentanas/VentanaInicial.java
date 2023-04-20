@@ -5,6 +5,7 @@
  */
 
 package vistaVentanas;
+import Logica.*;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -22,7 +23,7 @@ public class VentanaInicial  extends JFrame implements ActionListener {
 
     public VentanaInicial(){
         iniciarComponentes();
-        getContentPane().setBackground(new Color(252, 197, 192));
+        getContentPane().setBackground(new Color(242, 227, 219));
          
     }
     
@@ -30,7 +31,7 @@ public class VentanaInicial  extends JFrame implements ActionListener {
         //Configuración del Jframe
         setTitle("Fuga de palabras");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(519,450);
+        setSize(520,450);
         setLocationRelativeTo(null);
         setVisible(true); 
         setResizable(false);
@@ -43,26 +44,26 @@ public class VentanaInicial  extends JFrame implements ActionListener {
         add(jpImage);
 
         jpcontenedor = new JPanel();
-        jpcontenedor.setSize(519, 350);
-        jpcontenedor.setBounds(0,0,519,350);
+        jpcontenedor.setSize(490, 390);
+        jpcontenedor.setBounds((int)7.5,(int)10.5,490,390);
         jpcontenedor.setLayout(null);
-        jpcontenedor.setBackground(new Color(232, 160, 191));
+        jpcontenedor.setBackground(new Color(65, 100, 74));
         add(jpcontenedor); 
 
         lblBienvenida = new JLabel("BIENVENIDO A FUGA DE PALABRAS");
         lblBienvenida.setBounds(20,20,519,45);
-        lblBienvenida.setForeground(new Color(69, 60, 103));
+        lblBienvenida.setForeground(new Color(242, 227, 219));
         lblBienvenida.setFont(new Font("arial", Font.ROMAN_BASELINE, 26));
         
         lblNombreP = new JLabel("Nombre: ",SwingConstants.CENTER);
         lblNombreP.setBounds(20, 100, 100,30);
-        lblNombreP.setForeground(new Color(69, 60, 103));
+        lblNombreP.setForeground(new Color(242, 227, 219));
         lblNombreP.setFont(new Font("arial", Font.ROMAN_BASELINE, 22));
         
-        btninciar = new JButton("Ingresar");
+        btninciar = new JButton("INICAR");
         btninciar.setBounds(90, 180, 150, 40);
 
-        btninstruciones = new JButton("Instrucciones");
+        btninstruciones = new JButton("INSTRUCCIONES");
         btninstruciones.setBounds(270, 180, 150, 40);
 
         jpcontenedor.add(lblBienvenida);
@@ -72,11 +73,38 @@ public class VentanaInicial  extends JFrame implements ActionListener {
 
         txtNombre = new JTextField("");
         txtNombre.setBounds(130, 100, 350, 40);
-        txtNombre.setForeground(Color.GRAY);
+        txtNombre.setForeground(Color.black);
         txtNombre.setFont(new Font("arial", Font.ROMAN_BASELINE, 20));
         
         jpcontenedor.add(txtNombre);
-        
+
+        //Listeners:
+        btninciar.addActionListener(this);
+        btninstruciones.addActionListener(this);
+
+    }
+
+    //Aqui usaremos los metdos contructores :D
+    @Override
+    public void actionPerformed(ActionEvent evento){
+        if (evento.getSource() == btninciar) {
+            JuegoStar();
+        }else if (evento.getSource() == btninstruciones) {
+            dispose();
+            VentIntrucciones VentIntrucciones = new VentIntrucciones(); 
+        }
+    }
+
+    private void JuegoStar() {
+        String nombre= txtNombre.getText();
+        if(!nombre.trim().isEmpty() || nombre.trim().length() > 0){
+            dispose();
+            VentanaSeleccion ventanaSeleccion = new VentanaSeleccion();
+        }else {
+            JOptionPane.showMessageDialog(null, "PORFAVOR INGRESO SU NOMBRE PARA INCIAR",
+            "ADVERTENCIA", JOptionPane.ERROR_MESSAGE);
+            txtNombre.requestDefaultFocus();
+        }
     }
 
 }

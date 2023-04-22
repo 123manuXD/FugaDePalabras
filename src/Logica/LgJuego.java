@@ -20,5 +20,5 @@ public class LgJuego {
     private int cantidadFallos = 0;
     
     //metodos 
-   
+   }
 

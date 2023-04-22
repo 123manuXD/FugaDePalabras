@@ -9,7 +9,11 @@
 
  import java.awt.*;
 import java.awt.event.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Random;
 import java.util.Set;
+import java.sql.Array;
 
 import javax.swing.*;
 import Logica.Categorias;
@@ -27,6 +31,14 @@ import Logica.Categorias;
     private JPanel jpContA;
     private JPanel jpContB;
     private JPanel jpContC;
+
+    ///Categorias 
+    java.util.List <String> animales = Arrays.asList("Caballo", "Perro", "Vaca", "Leon", "Gato", "Hormiga", "Marrano", "Serpiente");
+    java.util.List <String> frutas = Arrays.asList("Banano","Manzana","Naranja", "Arandano", "Pera", "Cereza", "Guayaba", "Sandia");
+    java.util.List <String> colores = Arrays.asList("Azul","Blaco","Rojo", "Amarillo", "Plateado", "Verde","Morado","Violeta");
+    Random rand = new Random();
+    String palabraCategoria;
+    
 
     public VentanaSeleccion (){
         iniciarComponentes();
@@ -96,7 +108,7 @@ import Logica.Categorias;
         jpContC.add(btnColores);
 
         bt1 = new Decolib("/Imgs/PS1.png");
-        bt1.setBounds(2, 2,(int)227.31, (int)310.53);
+        bt1.setBounds(2, 120,(int)227.31, (int)310.53);
         btnAnimales.add(bt1);
 
         bt2 = new Decolib("/Imgs/PS2.png");
@@ -113,11 +125,25 @@ import Logica.Categorias;
         btnColores.addActionListener(this);
         
     }
-
+    
+    
     @Override
     public void actionPerformed(ActionEvent evento){
         if(evento.getSource() == btnAnimales){
-            obtenerNombre(1);
+            palabraCategoria = animales.get(rand.nextInt(animales.size()));
+            System.out.println(palabraCategoria);
+            dispose();
+            VentanaJuego ventanaJuego = new VentanaJuego();
+        }else if(evento.getSource() == btnColores) {
+            palabraCategoria = colores.get(rand.nextInt(colores.size()));
+            System.out.println(palabraCategoria);
+            dispose();
+            VentanaJuego ventanaJuego = new VentanaJuego();
+        }else if(evento.getSource() == btnFrutas){
+            palabraCategoria = frutas.get(rand.nextInt(frutas.size()));
+            System.out.println(palabraCategoria);
+            dispose();
+            VentanaJuego ventanaJuego = new VentanaJuego();
         }
     }
 

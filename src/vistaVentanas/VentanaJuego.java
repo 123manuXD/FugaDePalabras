@@ -31,10 +31,16 @@ public class VentanaJuego extends JFrame implements ActionListener{
     private JButton btno;
     private JButton btnu;
     
-
-    //Panel traer letra al sistema
+    //Para traer letra al sistema
     private JLabel lblPalabraAd;
     private JPanel jpPalabra;
+
+    //Decoracion de imagenes
+    private Decolib im1;
+    private Decolib im2;
+    private Decolib im3;
+    private Decolib im4;
+    private Decolib im5;
 
     private int cantidadPalabras = 1;
 
@@ -68,34 +74,34 @@ public class VentanaJuego extends JFrame implements ActionListener{
         lblPalabras.setBounds((int)21.5, (int)181.5 , 163, 35);
         lblPalabras.setFont(new Font("arial", Font.ROMAN_BASELINE, 15));
         lblPalabras.setOpaque(true);
-        lblPalabras.setBackground(new Color(222, 222, 222));
+        lblPalabras.setBackground(new Color(242, 227, 219));
 
         lblValuePa = new JLabel(" 15", SwingConstants.CENTER);
         lblValuePa.setBounds((int)210.5, (int)181.5, 69, 36);
         lblValuePa.setOpaque(true);
-        lblValuePa.setBackground(new Color(222, 222, 222));
+        lblValuePa.setBackground(new Color(242, 227, 219));
         
         lblIntento = new JLabel(" Numero de Intentos: ");
         lblIntento.setBounds((int)21.5, (int)233.5, 163, 35);
         lblIntento.setFont(new Font("arial", Font.ROMAN_BASELINE, 15));
         lblIntento.setOpaque(true);
-        lblIntento.setBackground(new Color(222, 222, 222));
+        lblIntento.setBackground(new Color(242, 227, 219));
 
         lblValueInt = new JLabel(/*LogGame.getCantidadIntentos()*/"12",SwingConstants.CENTER);
         lblValueInt.setBounds((int)210.5, (int)233.5, 69, 36);
         lblValueInt.setOpaque(true);
-        lblValueInt.setBackground(new Color(222, 222, 222));
+        lblValueInt.setBackground(new Color(242, 227, 219));
 
         lblfallos = new JLabel(" Numero de Fallos: ");
         lblfallos.setBounds((int)21.5, (int)290.5, 163, 35);
         lblfallos.setFont(new Font("arial", Font.ROMAN_BASELINE, 15));
         lblfallos.setOpaque(true);
-        lblfallos.setBackground(new Color(222, 222, 222));
+        lblfallos.setBackground(new Color(242, 227, 219));
 
         lblValueFall = new JLabel(/*LogGame.getCantidadFallos()*/"12", SwingConstants.CENTER);
         lblValueFall.setBounds((int)210.5, (int)290.5, 69, 36);
         lblValueFall.setOpaque(true);
-        lblValueFall.setBackground(new Color(222, 222, 222));
+        lblValueFall.setBackground(new Color(242, 227, 219));
 
         jpcontenidogoblal.add(lblPalabras);
         jpcontenidogoblal.add(lblValuePa);
@@ -142,10 +148,15 @@ public class VentanaJuego extends JFrame implements ActionListener{
 
         btnexit = new JButton("Terminar Juego");
         btnexit.setBounds((int)59.5, (int)441.5, 192, 42);
+        btnexit.setOpaque(true);
+        btnexit.setBackground(new Color(242, 227, 219));
         jpcontenidogoblal.add(btnexit);
+       
 
         btnnuevapalabra = new JButton("Nueva palaabra");
         btnnuevapalabra.setBounds((int)59.5, (int)381.5, 192, 42);
+        btnnuevapalabra.setOpaque(true);
+        btnnuevapalabra.setBackground(new Color(242, 227, 219));
         jpcontenidogoblal.add(btnnuevapalabra);
         
         jpcontenidogoblal.add(btna);
@@ -153,6 +164,23 @@ public class VentanaJuego extends JFrame implements ActionListener{
         jpcontenidogoblal.add(btni);
         jpcontenidogoblal.add(btno);
         jpcontenidogoblal.add(btnu); 
+
+        //configuracion para imagenes
+        im1 = new Decolib("/Imgs/Im1.png");
+        im1.setBounds(727, 195, 109, 104);
+        jpcontenidogoblal.add(im1);
+        im2 = new Decolib("/Imgs/Im2.png");
+        im2.setBounds( 464, 17, 241, 58);
+        jpcontenidogoblal.add(im2);
+        im3 = new Decolib("/Imgs/Im3.png");
+        im3.setBounds(222, 119, 59, 60);
+        jpcontenidogoblal.add(im3);
+        im4 = new Decolib("/Imgs/Im4.png");
+        im4.setBounds(325, 215, 90, 88 );
+        jpcontenidogoblal.add(im4);
+        im5 = new Decolib("/Imgs/Im5.png");
+        im5.setBounds(40, 502, 230, 81);
+        jpcontenidogoblal.add(im5);
 
         //Panel para adivinar palabra
         jpPalabra = new JPanel();
@@ -169,7 +197,6 @@ public class VentanaJuego extends JFrame implements ActionListener{
         lblPalabraAd.setBackground(new Color(222, 222, 222));
         setLayout(null);
         jpPalabra.add(lblPalabraAd);
-
 
 
         btna.addActionListener(this);

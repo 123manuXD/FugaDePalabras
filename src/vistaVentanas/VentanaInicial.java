@@ -62,9 +62,13 @@ public class VentanaInicial  extends JFrame implements ActionListener {
         
         btninciar = new JButton("INICAR");
         btninciar.setBounds(90, 180, 150, 40);
+        btninciar.setOpaque(true);
+        btninciar.setBackground(new Color(242, 227, 219));
 
         btninstruciones = new JButton("INSTRUCCIONES");
         btninstruciones.setBounds(270, 180, 150, 40);
+        btninstruciones.setOpaque(true);
+        btninstruciones.setBackground(new Color(242, 227, 219));
 
         jpcontenedor.add(lblBienvenida);
         jpcontenedor.add(lblNombreP);
@@ -75,6 +79,8 @@ public class VentanaInicial  extends JFrame implements ActionListener {
         txtNombre.setBounds(130, 100, 350, 40);
         txtNombre.setForeground(Color.black);
         txtNombre.setFont(new Font("arial", Font.ROMAN_BASELINE, 20));
+        txtNombre.setOpaque(true);
+        txtNombre.setBackground(new Color(242, 227, 219));
         
         jpcontenedor.add(txtNombre);
 

@@ -55,12 +55,14 @@ public class VentIntrucciones extends JFrame implements ActionListener {
         lbltitulo.setFont(new Font("arial", Font.ROMAN_BASELINE, 24));
 
         lblintrucc = new JLabel("<html>Bienvendio, para jugar sigue estos pasos:<p>1.Regresar a la ventana principal.<p>2.Seleccionar categoria.<p>3.Completa la palabra con los botones.<html>");
-        lblintrucc.setBounds(30, 50, 519, 100);
+        lblintrucc.setBounds(30, 70, 519, 100);
         lblintrucc.setForeground(new Color(242, 227, 219));
         lblintrucc.setFont(new Font("arial", Font.ROMAN_BASELINE, 20));
 
         btnvolver= new JButton("Volver");
-        btnvolver.setBounds(180, 180, 150, 40);
+        btnvolver.setBounds(180, 190, 150, 40);
+        btnvolver.setOpaque(true);
+        btnvolver.setBackground(new Color(242, 227, 219));
 
         jpcontend.add(lbltitulo);
         jpcontend.add(lblintrucc);

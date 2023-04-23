@@ -9,6 +9,7 @@
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+import LogicaJuego.LogGame;
 
 public class VentanaJuego extends JFrame implements ActionListener{
     //panel baseb
@@ -50,10 +51,11 @@ public class VentanaJuego extends JFrame implements ActionListener{
         ///conofigurar panelPrincipal
 
         jpcontenidogoblal = new JPanel();
+        setLayout(null);
         jpcontenidogoblal.setBounds(28, 10, 876, 598);
         jpcontenidogoblal.setBackground(new Color(65, 100, 74));
         add(jpcontenidogoblal);
-
+        
         lblPalabras = new JLabel(" Numero de Palabras: ");
         lblPalabras.setBounds((int)21.5, (int)61.5 , 163, 35);
         lblPalabras.setFont(new Font("arial", Font.ROMAN_BASELINE, 20));
@@ -118,14 +120,14 @@ public class VentanaJuego extends JFrame implements ActionListener{
 
         btno = new JButton("o");
         btno.setSize(120, 120);
-        btna.setBounds((int)425.5 , (int)454.5, 120, 120);
+        btno.setBounds((int)425.5 , (int)454.5, 120, 120);
         btno.setFont(new Font("arial", Font.ROMAN_BASELINE, 50));
         btno.setOpaque(true);
         btno.setBackground(new Color(242, 227, 219));
 
         btnu = new JButton("u");
         btnu.setSize(120, 120);
-        btna.setBounds((int)595.5 , (int)454.5, 120, 120);
+        btnu.setBounds((int)595.5 , (int)454.5, 120, 120);
         btnu.setFont(new Font("arial", Font.ROMAN_BASELINE, 50));
         btnu.setOpaque(true);
         btnu.setBackground(new Color(242, 227, 219));
@@ -141,17 +143,21 @@ public class VentanaJuego extends JFrame implements ActionListener{
         jpcontenidogoblal.add(btnu); 
 
         jpPalabra = new JPanel();
+        setLayout(null);
         jpPalabra.setBounds((int)344.5, (int)58.5, 462, 225);
         jpPalabra.setBackground(new Color(242, 227, 219));
         jpcontenidogoblal.add(jpPalabra);
-
-        lblPalabraAd = new JLabel();
+    
+        lblPalabraAd = new JLabel("Dinosario");
         lblPalabraAd.setSize(392, 178);
         lblPalabraAd.setBounds((int)34.5, (int)22.5, 392, 178);
         lblPalabraAd.setFont(new Font("arial", Font.ROMAN_BASELINE, 80));
         lblPalabraAd.setOpaque(true);
         lblPalabraAd.setBackground(new Color(222, 222, 222));
+        setLayout(null);
         jpPalabra.add(lblPalabraAd);
+
+
 
         btna.addActionListener(this);
         btne.addActionListener(this);
@@ -164,7 +170,7 @@ public class VentanaJuego extends JFrame implements ActionListener{
 
     private void igualdad(String vocalUsuario){
         ///
-        String vocalAdivinar = "a";
+        String vocalAdivinar = "a"; // LogGame.getvocalselect 
         if(vocalAdivinar.equals(vocalUsuario)){
             JOptionPane.showMessageDialog(null, "La vocal coincide cosdsdsd");
             ///while
@@ -179,6 +185,12 @@ public class VentanaJuego extends JFrame implements ActionListener{
           igualdad("a");
         }else if (evento.getSource() == btne) {
             igualdad("e");
+        }else if (evento.getSource() == btni) {
+            igualdad("i");
+        }else if (evento.getSource() == btno) {
+            igualdad("o");
+        }else if (evento.getSource() == btnu) {
+            igualdad("u");
         }
     }
 

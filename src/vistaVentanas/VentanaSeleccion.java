@@ -16,7 +16,7 @@ import java.util.Set;
 import java.sql.Array;
 
 import javax.swing.*;
-import Logica.Categorias;
+import LogicaJuego.LogGame;
 
  public class VentanaSeleccion extends JFrame implements ActionListener{
 
@@ -32,17 +32,18 @@ import Logica.Categorias;
     private JPanel jpContB;
     private JPanel jpContC;
 
-    ///Categorias 
+    /*  ///Categorias 
     java.util.List <String> animales = Arrays.asList("Caballo", "Perro", "Vaca", "Leon", "Gato", "Hormiga", "Marrano", "Serpiente");
     java.util.List <String> frutas = Arrays.asList("Banano","Manzana","Naranja", "Arandano", "Pera", "Cereza", "Guayaba", "Sandia");
     java.util.List <String> colores = Arrays.asList("Azul","Blaco","Rojo", "Amarillo", "Plateado", "Verde","Morado","Violeta");
     Random rand = new Random();
-    String palabraCategoria;
-    
+    String  palabraCategoria; */
 
     public VentanaSeleccion (){
         iniciarComponentes();
         getContentPane().setBackground((new Color(242, 227, 219)));
+        //this.palabraCategoria = palabraCategoria; 
+
     }
 
     private void iniciarComponentes() {
@@ -130,18 +131,18 @@ import Logica.Categorias;
     @Override
     public void actionPerformed(ActionEvent evento){
         if(evento.getSource() == btnAnimales){
-            palabraCategoria = animales.get(rand.nextInt(animales.size()));
-            System.out.println(palabraCategoria);
             dispose();
+            LogGame lg = new LogGame();
+            lg.palabraCategoria("animales");
             VentanaJuego ventanaJuego = new VentanaJuego();
         }else if(evento.getSource() == btnColores) {
-            palabraCategoria = colores.get(rand.nextInt(colores.size()));
-            System.out.println(palabraCategoria);
             dispose();
+            LogGame lg = new LogGame();
+            lg.palabraCategoria("colores");
             VentanaJuego ventanaJuego = new VentanaJuego();
         }else if(evento.getSource() == btnFrutas){
-            palabraCategoria = frutas.get(rand.nextInt(frutas.size()));
-            System.out.println(palabraCategoria);
+            LogGame lg = new LogGame();
+            lg.palabraCategoria("frutas");
             dispose();
             VentanaJuego ventanaJuego = new VentanaJuego();
         }

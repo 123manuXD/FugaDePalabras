@@ -134,16 +134,19 @@ import LogicaJuego.LogGame;
             dispose();
             LogGame lg = new LogGame();
             lg.palabraCategoria("animales");
+            lg.palabraIndex();
             VentanaJuego ventanaJuego = new VentanaJuego();
         }else if(evento.getSource() == btnColores) {
             dispose();
             LogGame lg = new LogGame();
             lg.palabraCategoria("colores");
+            lg.palabraIndex();
             VentanaJuego ventanaJuego = new VentanaJuego();
         }else if(evento.getSource() == btnFrutas){
+            dispose();
             LogGame lg = new LogGame();
             lg.palabraCategoria("frutas");
-            dispose();
+            lg.palabraIndex();
             VentanaJuego ventanaJuego = new VentanaJuego();
         }
     }

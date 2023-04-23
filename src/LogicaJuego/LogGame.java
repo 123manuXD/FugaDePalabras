@@ -25,12 +25,13 @@ public class LogGame {
     //Puntaje a presentar por ronda final
     private int cantidadAciertos = 0;
     private int cantidadFallos = 0;
-    private int cantidadIntentos = 0;
+    private int cantidadIntentos = 10;
+    private int cantidadPalabras = 1;
 
 
     //Seleccion de palabra con su vocal remplazada y guardada en una variable
-    String palabrasinvocal;
-    String vocalSelect;
+    private String palabrasinvocal;
+    private String vocalSelect;
 
 
     ///Categorias 
@@ -38,7 +39,7 @@ public class LogGame {
     java.util.List <String> frutas = Arrays.asList("manzana", "banana", "naranja", "uva", "pera","sandía", "melón", "durazno", "kiwi", "fresa", "frambuesa", "arándano", "cereza", "piña", "mango","papaya", "guayaba", "maracuyá", "granada", "limón", "mandarina", "toronja", "coco", "pitalla", "cholupa");
     java.util.List <String> colores = Arrays.asList("rojo", "verde", "azul", "amarillo", "naranja","rosa", "violeta", "gris", "blanco", "negro", "marron", "turquesa", "celeste", "beige", "burdeos","plateado", "dorado", "ocre", "esmeralda", "cian", "amaranto", "carmin", "magenta", "oliva", "teja");
     Random rand = new Random();
-    String  palabraCategoria;
+    private String  palabraCategoria;
 
     public LogGame(){
         ///
@@ -80,7 +81,7 @@ public class LogGame {
         System.out.println("la vocal seleccionada es "+ vocalSelect);
         System.out.println("La palabra sin vocal es " + palabrasinvocal);   
     }
-    
+
     public String getPalabrasinvocal() {
         return palabrasinvocal;
     }
@@ -97,6 +98,10 @@ public class LogGame {
         return cantidadIntentos;
     }
 
+    public int getCantidadPalabras(){
+        return cantidadPalabras;
+    }
+
     public int getCantidadFallos() {
         return cantidadFallos;
     }
@@ -105,10 +110,14 @@ public class LogGame {
         cantidadAciertos++;
     }
     public void cantidadIntentos(){
-        cantidadIntentos++;
+        cantidadIntentos--;
     }
     public void cantidadFallos(){
         cantidadFallos++;
+    }
+
+    public void cantidadPalabras(){
+        cantidadPalabras++;
     }
 
     

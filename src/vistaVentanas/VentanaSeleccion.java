@@ -32,13 +32,7 @@ import LogicaJuego.LogGame;
     private JPanel jpContB;
     private JPanel jpContC;
 
-    /*  ///Categorias 
-    java.util.List <String> animales = Arrays.asList("Caballo", "Perro", "Vaca", "Leon", "Gato", "Hormiga", "Marrano", "Serpiente");
-    java.util.List <String> frutas = Arrays.asList("Banano","Manzana","Naranja", "Arandano", "Pera", "Cereza", "Guayaba", "Sandia");
-    java.util.List <String> colores = Arrays.asList("Azul","Blaco","Rojo", "Amarillo", "Plateado", "Verde","Morado","Violeta");
-    Random rand = new Random();
-    String  palabraCategoria; */
-
+    private LogGame lg = new LogGame(); 
     public VentanaSeleccion (){
         iniciarComponentes();
         getContentPane().setBackground((new Color(242, 227, 219)));
@@ -132,22 +126,19 @@ import LogicaJuego.LogGame;
     public void actionPerformed(ActionEvent evento){
         if(evento.getSource() == btnAnimales){
             dispose();
-            LogGame lg = new LogGame();
             lg.palabraCategoria("animales");
             lg.palabraIndex();
-            VentanaJuego ventanaJuego = new VentanaJuego();
+            VentanaJuego ventanaJuego = new VentanaJuego(lg);
         }else if(evento.getSource() == btnColores) {
             dispose();
-            LogGame lg = new LogGame();
             lg.palabraCategoria("colores");
             lg.palabraIndex();
-            VentanaJuego ventanaJuego = new VentanaJuego();
+            VentanaJuego ventanaJuego = new VentanaJuego(lg);
         }else if(evento.getSource() == btnFrutas){
             dispose();
-            LogGame lg = new LogGame();
             lg.palabraCategoria("frutas");
             lg.palabraIndex();
-            VentanaJuego ventanaJuego = new VentanaJuego();
+            VentanaJuego ventanaJuego = new VentanaJuego(lg);
         }
     }
 

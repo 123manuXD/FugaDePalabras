@@ -30,6 +30,7 @@ public class VentanaJuego extends JFrame implements ActionListener{
     private JButton btni;
     private JButton btno;
     private JButton btnu;
+
     
     //Para traer letra al sistema
     private JLabel lblPalabraAd;
@@ -42,11 +43,14 @@ public class VentanaJuego extends JFrame implements ActionListener{
     private Decolib im4;
     private Decolib im5;
 
-    private int cantidadPalabras = 1;
+    private LogGame lgjuego;
+    private int fallos;
 
-    public VentanaJuego(){
+    public VentanaJuego(LogGame lgjuego){
+        this.lgjuego = lgjuego;
         iniciarComponentes();
         getContentPane().setBackground((new Color(242, 227, 219)));
+       
     }
 
     private void iniciarComponentes() {
@@ -76,7 +80,7 @@ public class VentanaJuego extends JFrame implements ActionListener{
         lblPalabras.setOpaque(true);
         lblPalabras.setBackground(new Color(242, 227, 219));
 
-        lblValuePa = new JLabel(" 15", SwingConstants.CENTER);
+        lblValuePa = new JLabel(String.valueOf(lgjuego.getCantidadPalabras()),SwingConstants.CENTER);
         lblValuePa.setBounds((int)210.5, (int)181.5, 69, 36);
         lblValuePa.setOpaque(true);
         lblValuePa.setBackground(new Color(242, 227, 219));
@@ -87,7 +91,7 @@ public class VentanaJuego extends JFrame implements ActionListener{
         lblIntento.setOpaque(true);
         lblIntento.setBackground(new Color(242, 227, 219));
 
-        lblValueInt = new JLabel(/*LogGame.getCantidadIntentos()*/"12",SwingConstants.CENTER);
+        lblValueInt = new JLabel(String.valueOf(lgjuego.getCantidadIntentos()),SwingConstants.CENTER);
         lblValueInt.setBounds((int)210.5, (int)233.5, 69, 36);
         lblValueInt.setOpaque(true);
         lblValueInt.setBackground(new Color(242, 227, 219));
@@ -98,7 +102,7 @@ public class VentanaJuego extends JFrame implements ActionListener{
         lblfallos.setOpaque(true);
         lblfallos.setBackground(new Color(242, 227, 219));
 
-        lblValueFall = new JLabel(/*LogGame.getCantidadFallos()*/"12", SwingConstants.CENTER);
+        lblValueFall = new JLabel(String.valueOf(lgjuego.getCantidadFallos()),SwingConstants.CENTER);
         lblValueFall.setBounds((int)210.5, (int)290.5, 69, 36);
         lblValueFall.setOpaque(true);
         lblValueFall.setBackground(new Color(242, 227, 219));
@@ -153,7 +157,7 @@ public class VentanaJuego extends JFrame implements ActionListener{
         jpcontenidogoblal.add(btnexit);
        
 
-        btnnuevapalabra = new JButton("Nueva palaabra");
+        btnnuevapalabra = new JButton("Nueva palabra");
         btnnuevapalabra.setBounds((int)59.5, (int)381.5, 192, 42);
         btnnuevapalabra.setOpaque(true);
         btnnuevapalabra.setBackground(new Color(242, 227, 219));
@@ -189,10 +193,10 @@ public class VentanaJuego extends JFrame implements ActionListener{
         jpPalabra.setBackground(new Color(242, 227, 219));
         jpcontenidogoblal.add(jpPalabra);
     
-        lblPalabraAd = new JLabel(/*LogGame.getPalabrasinvocal()*/);
+        lblPalabraAd = new JLabel(lgjuego.getPalabrasinvocal(), SwingConstants.CENTER);
         lblPalabraAd.setSize(392, 178);
         lblPalabraAd.setBounds((int)34.5, (int)22.5, 392, 178);
-        lblPalabraAd.setFont(new Font("arial", Font.ROMAN_BASELINE, 80));
+        lblPalabraAd.setFont(new Font("arial", Font.ROMAN_BASELINE, 90));
         lblPalabraAd.setOpaque(true);
         lblPalabraAd.setBackground(new Color(222, 222, 222));
         setLayout(null);
@@ -212,15 +216,22 @@ public class VentanaJuego extends JFrame implements ActionListener{
 
     private void igualdad(String vocalUsuario){
         ///
-        String vocalAdivinar = "a"; // LogGame.getvocalselect 
-        if(vocalAdivinar.equals(vocalUsuario)){
+        lgjuego.getVocalSelect(); 
+        if(lgjuego.getVocalSelect().equals(vocalUsuario)){
             JOptionPane.showMessageDialog(null, "La vocal coincide, Felicidades");
-            ///while
+            lgjuego.cantidadAciertos();
+            
         }else {
             JOptionPane.showMessageDialog(null, "La vocal no coincide, Intente de nuevo");
+            verificarintentos();
+            lgjuego.cantidadFallos();
+            lblValueFall.setText(Integer.toString(lgjuego.getCantidadFallos()));
+            lgjuego.cantidadIntentos();
+            lblValueInt.setText(Integer.toString(lgjuego.getCantidadIntentos()));
+            
         }
     }
-
+    
     @Override
     public void actionPerformed(ActionEvent evento){
         if (evento.getSource() == btna) {
@@ -233,12 +244,37 @@ public class VentanaJuego extends JFrame implements ActionListener{
             igualdad("o");
         }else if (evento.getSource() == btnu) {
             igualdad("u");
+        }else if(evento.getSource() == btnnuevapalabra){
+            lgjuego.palabraCategoria("animales");
+            lgjuego.palabraIndex();
+            lblPalabraAd.setText(lgjuego.getPalabrasinvocal());
+            lgjuego.cantidadPalabras();
+            lblValuePa.setText(Integer.toString(lgjuego.getCantidadPalabras()));
         }
     
     }
-    public void terminarJuego(ActionEvent finish){
-        ////
+
+    public void verificarintentos(){
+        fallos = lgjuego.getCantidadFallos();
+        if (fallos >= 9) {
+            showEstadisticas(); 
+        }
     }
 
+    public void showEstadisticas(){
+        int aciertos = lgjuego.getCantidadAciertos();
+        int fallos = lgjuego.getCantidadFallos();
+        int palabras = lgjuego.getCantidadPalabras();
+        int suma = aciertos+fallos;
+
+        double porcentajeAciertos = (double) aciertos / suma * 100.0;
+        porcentajeAciertos = Math.round(porcentajeAciertos*100)/100;
+
+        double porcentajeFallos = (double) fallos / suma *100.0;
+        porcentajeFallos = Math.round(porcentajeFallos * 100.0)/100.0;
+
+        JOptionPane.showMessageDialog(null,"PALABRAS --> " + palabras + "\nVocales encontradas: " + aciertos + " (" + porcentajeAciertos + "% )" + "\nVocales Fugada: " + fallos + " (" + porcentajeFallos+ "% )");
+
+    }
 
 }

@@ -40,6 +40,7 @@ public class LogGame {
     java.util.List <String> colores = Arrays.asList("rojo", "verde", "azul", "amarillo", "naranja","rosa", "violeta", "gris", "blanco", "negro", "marron", "turquesa", "celeste", "beige", "burdeos","plateado", "dorado", "ocre", "esmeralda", "cian", "amaranto", "carmin", "magenta", "oliva", "teja");
     Random rand = new Random();
     private String  palabraCategoria;
+    private String categselecionada;
 
     public LogGame(){
         ///
@@ -57,6 +58,8 @@ public class LogGame {
             palabraCategoria = colores.get(rand.nextInt(colores.size()));
             System.out.println(palabraCategoria);
         }
+        categselecionada = categ;
+        System.out.println("Pruebas de categoria" + categselecionada);
 
     }
     
@@ -80,6 +83,10 @@ public class LogGame {
         palabrasinvocal = palabraCategoria.replace(vocalSelect, "_");
         System.out.println("la vocal seleccionada es "+ vocalSelect);
         System.out.println("La palabra sin vocal es " + palabrasinvocal);   
+    }
+
+    public String getCategselecionada() {
+        return categselecionada;
     }
 
     public String getPalabrasinvocal() {

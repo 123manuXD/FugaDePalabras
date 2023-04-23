@@ -191,15 +191,16 @@ public class VentanaJuego extends JFrame implements ActionListener{
         jpPalabra.setLayout(null);
         jpPalabra.setBounds((int)344.5, (int)58.5, 462, 225);
         jpPalabra.setBackground(new Color(242, 227, 219));
+        
         jpcontenidogoblal.add(jpPalabra);
     
         lblPalabraAd = new JLabel(lgjuego.getPalabrasinvocal(), SwingConstants.CENTER);
         lblPalabraAd.setSize(392, 178);
         lblPalabraAd.setBounds((int)34.5, (int)22.5, 392, 178);
-        lblPalabraAd.setFont(new Font("arial", Font.ROMAN_BASELINE, 90));
+        lblPalabraAd.setFont(new Font("arial", Font.ROMAN_BASELINE, 70));
         lblPalabraAd.setOpaque(true);
         lblPalabraAd.setBackground(new Color(222, 222, 222));
-        setLayout(null);
+        lblPalabraAd.setLayout(null);
         jpPalabra.add(lblPalabraAd);
 
 
@@ -245,11 +246,13 @@ public class VentanaJuego extends JFrame implements ActionListener{
         }else if (evento.getSource() == btnu) {
             igualdad("u");
         }else if(evento.getSource() == btnnuevapalabra){
-            lgjuego.palabraCategoria("animales");
+            lgjuego.palabraCategoria(lgjuego.getCategselecionada());
             lgjuego.palabraIndex();
             lblPalabraAd.setText(lgjuego.getPalabrasinvocal());
             lgjuego.cantidadPalabras();
             lblValuePa.setText(Integer.toString(lgjuego.getCantidadPalabras()));
+        }else if(evento.getSource() == btnexit){
+            showEstadisticas();
         }
     
     }
@@ -274,7 +277,7 @@ public class VentanaJuego extends JFrame implements ActionListener{
         porcentajeFallos = Math.round(porcentajeFallos * 100.0)/100.0;
 
         JOptionPane.showMessageDialog(null,"PALABRAS --> " + palabras + "\nVocales encontradas: " + aciertos + " (" + porcentajeAciertos + "% )" + "\nVocales Fugada: " + fallos + " (" + porcentajeFallos+ "% )");
-
+        System.exit(0);
     }
 
 }
